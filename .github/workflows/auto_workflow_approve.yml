@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Automatic Approve
-        uses: mheap/automatic-approve-action@c18642bf35643065692b1108cc3becfa4804087b
+        uses: mheap/automatic-approve-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           workflows: "ci_suite.yml,gbp.yml"

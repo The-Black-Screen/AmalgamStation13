@@ -35,11 +35,15 @@ map metastation
 endmap
 
 map deltastation
-	minplayers 50
+	minplayers 40
 	votable
 endmap
 
 map kilostation
+	votable
+endmap
+
+map limastation
 	votable
 endmap
 
@@ -49,7 +53,21 @@ map icebox
 endmap
 
 map tramstation
-	minplayers 35
+	minplayers 30
+	votable
+endmap
+
+map cubestation
+	votable
+endmap
+
+map shitstation
+	minplayers 30
+	votable
+endmap
+
+map echostation
+	minplayers 20
 	votable
 endmap
 

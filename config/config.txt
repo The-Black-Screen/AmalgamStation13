@@ -87,7 +87,7 @@ USE_EXP_TRACKING
 ## Unhash this to enable playtime requirements for certain non-head jobs, like Engineer and Scientist.
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
-#USE_EXP_RESTRICTIONS_ADMIN_BYPASS
+USE_EXP_RESTRICTIONS_ADMIN_BYPASS
 ## Unhash this to have intern tags automatically added to ID cards for station roles depending on the living hours of the player holding them.
 #USE_LOW_LIVING_HOUR_INTERN
 ## If USE_LOW_LIVING_HOUR_INTERN is unhashed, players under this number of living hours have [Intern] added to their ID card. If this isn't set, uses USE_EXP_RESTRICTIONS_HEADS_HOURS instead. If that isn't set, it finally defaults to a hardcoded fallback of 15 hours.
@@ -182,7 +182,7 @@ PICTURE_LOGGING_CAMERA
 INACTIVITY_PERIOD 300
 
 ## period of time in seconds for players to be considered afk and kickable
-AFK_PERIOD 1200
+AFK_PERIOD 1800
 
 ## disconnect players who are considered afk
 KICK_INACTIVE
@@ -470,13 +470,13 @@ MINUTE_CLICK_LIMIT 400
 
 ##Error handling related options
 ## The "cooldown" time for each occurence of a unique error
-#ERROR_COOLDOWN 600
+ERROR_COOLDOWN 600
 ## How many occurences before the next will silence them
-#ERROR_LIMIT 90
+ERROR_LIMIT 90
 ## How long a unique error will be silenced for
-#ERROR_SILENCE_TIME 6000
+ERROR_SILENCE_TIME 6000
 ##How long to wait between messaging admins about occurences of a unique error
-#ERROR_MSG_DELAY 50
+ERROR_MSG_DELAY 50
 
 
 ## Game Chat Message Options
@@ -531,7 +531,7 @@ DEFAULT_VIEW 19x15
 ##Default view size, in tiles. Should *always* be square.
 ## The alternative square viewport size if you're using a widescreen view size
 ## You probably shouldn't ever be changing this, but it's here if you want to.
-DEFAULT_VIEW_SQUARE 19x15
+DEFAULT_VIEW_SQUARE 15x15
 
 
 ## Enable automatic profiling - Byond 513.1506 and newer only.

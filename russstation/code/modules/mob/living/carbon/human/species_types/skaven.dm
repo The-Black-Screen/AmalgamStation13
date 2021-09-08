@@ -3,7 +3,7 @@
 	id = "skaven"
 	say_mod = "jitters"
 	default_color = "2E2E2E"
-	species_traits = list(DYNCOLORS,AGENDER,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
+	species_traits = list(DYNCOLORS, AGENDER, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list("tail_skaven" = "Skaven", "snout" = "Round", "horns" = "None")
 	mutantears = /obj/item/organ/ears/skaven
@@ -24,7 +24,7 @@
 	species_language_holder = /datum/language_holder/skaven
 	sexes = FALSE //ever heard of female skaven? didnt think so
 
-/datum/species/skaven/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/species/skaven/pre_equip_species_outfit(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	H.equipOutfit(/datum/outfit/skaven, visualsOnly)
 	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)

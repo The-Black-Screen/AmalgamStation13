@@ -20,7 +20,7 @@ jobs:
         git reset --hard master
 
     - name: Apply DMAPI update
-      uses: tgstation/tgs-dmapi-updater@v2
+      uses: tgstation/tgs-dmapi-updater@v1
       with:
         header-path: 'code/__DEFINES/tgs.dm'
         library-path: 'code/modules/tgs'
@@ -28,8 +28,8 @@ jobs:
     - name: Commit and Push
       continue-on-error: true
       run: |
-        git config user.name TomFulpBot
-        git config user.email TomFulpBot@users.noreply.github.com
+        git config user.name The-Black-Screen
+        git config user.email The-Black-Screen@users.noreply.github.com
         git add .
         git commit -m 'Update TGS DMAPI'
         git push -f -u origin tgs-dmapi-update

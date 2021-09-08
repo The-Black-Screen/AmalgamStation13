@@ -13,6 +13,11 @@ Format:
 	votable (is this map votable)
 endmap
 
+//map anrilstation
+//	votable
+//	minlplayes 25
+//endmap
+
 map selenestation
 	votable
 endmap
@@ -43,9 +48,9 @@ map kilostation
 	votable
 endmap
 
-map limastation
-	votable
-endmap
+//map limastation
+//	votable
+//endmap
 
 map icebox
 	minplayers 25
@@ -57,19 +62,19 @@ map tramstation
 	votable
 endmap
 
-map cubestation
-	votable
-endmap
+//map cubestation
+//	votable
+//endmap
 
-map shitstation
-	minplayers 30
-	votable
-endmap
+//map shitstation
+//	minplayers 30
+//	votable
+//endmap
 
-map echostation
-	minplayers 20
-	votable
-endmap
+//map echostation
+//	minplayers 20
+//	votable
+//endmap
 
 map runtimestation
 endmap

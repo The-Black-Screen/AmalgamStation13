@@ -13,8 +13,6 @@
 
 This is the codebase for BlackStation13, a custom fork of [Fulpstation](https://github.com/fulpstation/fulpstation) which is also a custom fork of the [/tg/station](https://github.com/tgstation/tgstation) flavored fork of SpaceStation 13.
 
-BlackStation13 started out as an idea that I got from my time playing on RussStation and it was further developed on by taking looks at the many other flavors and forks of SS13 and it pulls a lot of the stuff in it from them.
-
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
 ## DOWNLOADING

@@ -7,12 +7,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 5 // FULP EDIT - 5 races, 5 slots. Why not?
+	var/max_save_slots = 10 // Max amount of characters someone can have
 
 	//non-preference stuff
-	var/muted = 0
-	var/last_ip
-	var/last_id
+	var/warns = 0 // Pulled from vore station
+	var/muted = 0 // Flags for admin mutes
+	var/last_ip // Last IP the person was seen on
+	var/last_id // Last CID the person was seen on
+	var/log_clicks = FALSE // do we log their clicks to disk?
 
 	//game-preferences
 	var/lastchangelog = "" //Saved changlog filesize to detect if there was a change
@@ -67,8 +69,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//character preferences
 	var/slot_randomized //keeps track of round-to-round randomization of the character slot, prevents overwriting
 	var/real_name //our character's name
+	var/be_random_name = 0 //whether we are a random name every round // pulled from vore station
+	var/nickname // our character's nickname // pulled from VORE Station
 	var/gender = MALE //gender of character (well duh)
 	var/age = 30 //age of character
+	var/b_type = "A+" //blood type (not-chooseable) // pulled from VORE Station
+	var/grad_style = "none" //Gradient style // pulled from VORE Station
+	var/r_grad = 0 //Gradient color // pulled from VORE Station
+	var/g_grad = 0 //Gradient color // pulled from VORE Station
+	var/b_grad = 0 //Gradient color // pulled from VORE Station
 	var/underwear = "Nude" //underwear type
 	var/underwear_color = "000" //underwear color
 	var/undershirt = "Nude" //undershirt type
@@ -76,13 +85,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/backpack = DBACKPACK //backpack type
 	var/jumpsuit_style = PREF_SUIT //suit/skirt
 	var/hairstyle = "Bald" //Hair type
-	var/hair_color = "000" //Hair color
+	var/hair_color = "000000" //Hair color
 	var/facial_hairstyle = "Shaved" //Face hair type
-	var/facial_hair_color = "000" //Facial hair color
+	var/facial_hair_color = "000000" //Facial hair color
 	var/skin_tone = "caucasian1" //Skin color
-	var/eye_color = "000" //Eye color
+	var/use_custom_skin_tone = FALSE
+	var/eye_color = "000000" //Eye color
+	var/eye_type = DEFAULT_EYES_TYPE //Eye type //Pulled from Citadel Station 13
+	var/split_eye_colors = FALSE //Pulled from Citadel Station 13
 	var/datum/species/pref_species = new /datum/species/human() //Mutant race
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_antennae" = "Plain", "moth_markings" = "None")
+	//honk start - adds tail_skaven and skavencolors to features list
+	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "skavencolor" = "080808", "tail_skaven" = "Skaven", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_antennae" = "Plain", "moth_markings" = "None")
+	//honk end
 	var/list/randomise = list(
 		RANDOM_UNDERWEAR = TRUE,
 		RANDOM_UNDERWEAR_COLOR = TRUE,
@@ -102,6 +116,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
 	var/prefered_security_department = SEC_DEPT_NONE
+	var/custom_species = null //Pulled from Citadel Station 13
 
 	//Quirk list
 	var/list/all_quirks = list()

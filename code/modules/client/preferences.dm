@@ -91,8 +91,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1" //Skin color
 	var/use_custom_skin_tone = FALSE
 	var/eye_color = "000000" //Eye color
-	var/eye_type = DEFAULT_EYES_TYPE //Eye type //Pulled from Citadel Station 13
-	var/split_eye_colors = FALSE //Pulled from Citadel Station 13
 	var/datum/species/pref_species = new /datum/species/human() //Mutant race
 	//honk start - adds tail_skaven and skavencolors to features list
 	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "skavencolor" = "080808", "tail_skaven" = "Skaven", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_antennae" = "Plain", "moth_markings" = "None")

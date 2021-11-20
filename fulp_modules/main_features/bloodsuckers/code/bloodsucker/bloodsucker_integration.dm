@@ -1,3 +1,17 @@
+GLOBAL_LIST_INIT(fulp_huds, list(
+	ANTAG_HUD_BLOODSUCKER = new/datum/atom_hud/antag/bloodsucker(),
+))
+
+/client/has_antag_hud()
+	var/adding_hud = !has_fulp_antag_hud()
+	for(var/datum/atom_hud/antag/all_huds in GLOB.fulp_huds) // add antag huds
+		(adding_hud) ? all_huds.add_hud_to(usr) : all_huds.remove_hud_from(usr)
+	. = ..()
+
+/client/proc/has_fulp_antag_hud()
+	var/datum/atom_hud/antag_huds = GLOB.fulp_huds[ANTAG_HUD_TRAITOR]
+	return antag_huds.hudusers[mob]
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //			TG OVERWRITES
@@ -5,10 +19,10 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Gives Curators their abilities
-/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/curator/post_equip(mob/living/carbon/human/user, visualsOnly = FALSE)
 	. = ..()
 
-	ADD_TRAIT(H, TRAIT_BLOODSUCKER_HUNTER, JOB_TRAIT)
+	ADD_TRAIT(user, TRAIT_BLOODSUCKER_HUNTER, JOB_TRAIT)
 
 /// Prevents using a Memento Mori
 /obj/item/clothing/neck/necklace/memento_mori/memento(mob/living/carbon/human/user)
@@ -17,9 +31,9 @@
 		return
 	. = ..()
 
-/datum/species/jelly/slime/spec_life(mob/living/carbon/human/H)
+/datum/species/jelly/slime/spec_life(mob/living/carbon/human/user)
 	// Prevents Slimeperson 'gaming
-	if(IS_BLOODSUCKER(H))
+	if(IS_BLOODSUCKER(user))
 		return
 	. = ..()
 
@@ -32,21 +46,21 @@
 		return
 	. = ..()
 
-/mob/living/carbon/natural_bodytemperature_stabilization()
+/mob/living/carbon/human/natural_bodytemperature_stabilization(datum/gas_mixture/environment, delta_time, times_fired)
 	// Return 0 as your natural temperature. Species proc handle_environment() will adjust your temperature based on this.
 	if(HAS_TRAIT(src, TRAIT_COLDBLOODED))
 		return 0
 	. = ..()
 
-// Overwrites mob/living/life.dm for LifeTick
-/mob/living/Life(delta_time = SSMOBS_DT, times_fired)
+// Overwrites mob/living/life.dm instead of doing handle_changeling
+/mob/living/carbon/human/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_LIVING_BIOLOGICAL_LIFE, delta_time, times_fired)
 
 // Used when analyzing a Bloodsucker, Masquerade will hide brain traumas (Unless you're a Beefman)
 /mob/living/carbon/get_traumas()
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = IS_BLOODSUCKER(src)
-	if(bloodsuckerdatum && bloodsuckerdatum.poweron_masquerade && !isbeefman(src))
+	if(bloodsuckerdatum && HAS_TRAIT(src, TRAIT_MASQUERADE) && !isbeefman(src))
 		return
 	. = ..()
 
@@ -142,17 +156,19 @@
 
 /// Am I "pale" when examined? - Bloodsuckers on Masquerade will hide this.
 /mob/living/carbon/human/proc/ShowAsPaleExamine(mob/user, apparent_blood_volume)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = IS_BLOODSUCKER(user)
+	if(!mind)
+		return BLOODSUCKER_HIDE_BLOOD
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = mind.has_antag_datum(/datum/antagonist/bloodsucker)
 	// Not a Bloodsucker?
 	if(!bloodsuckerdatum)
-		return ""
+		return BLOODSUCKER_HIDE_BLOOD
 	// Blood level too low to be hidden?
-	if(apparent_blood_volume <= BLOOD_VOLUME_BAD || bloodsuckerdatum.Frenzied)
-		return ""
+	if(apparent_blood_volume <= BLOOD_VOLUME_BAD || bloodsuckerdatum.frenzied)
+		return BLOODSUCKER_HIDE_BLOOD
 	// Special check: Nosferatu will always be Pale Death
 	if(bloodsuckerdatum.my_clan == CLAN_NOSFERATU)
 		return "<b>[p_they(TRUE)] look[p_s()] like pale death"
-	if(bloodsuckerdatum.poweron_masquerade)
+	if(HAS_TRAIT(src, TRAIT_MASQUERADE))
 		return BLOODSUCKER_HIDE_BLOOD
 	switch(apparent_blood_volume)
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
@@ -161,12 +177,7 @@
 			return "<b>[p_they(TRUE)] look[p_s()] like pale death.</b>\n"
 	// If a Bloodsucker is malnourished, AND if his temperature matches his surroundings (aka he hasn't fed recently and looks COLD)
 //	return blood_volume < BLOOD_VOLUME_OKAY // && !(bodytemperature <= get_temperature() + 2)
-/*
-/mob/living/carbon/proc/scan_blood_volume()
-	// Vamps don't show up normally to scanners unless Masquerade power is on ----> scanner.dm
-	if(mind)
-		var/datum/antagonist/bloodsucker/bloodsuckerdatum = mind.has_antag_datum(/datum/antagonist/bloodsucker)
-		if(istype(bloodsuckerdatum) && bloodsuckerdatum.poweron_masquerade)
-			return BLOOD_VOLUME_NORMAL
-	return blood_volume
-*/
+
+/datum/outfit/bloodsucker_outfit
+	name = "Bloodsucker outfit (Preview only)"
+	suit = /obj/item/clothing/suit/dracula

@@ -13,9 +13,18 @@ Format:
 	votable (is this map votable)
 endmap
 
-//map anrilstation
+//map amalgamstation
 //	votable
-//	minlplayes 25
+//endmap
+
+//map siberiastation
+//	votable
+//	minlplayes 30
+//endmap
+
+//map hellstation
+//	votable
+//	minplayers 30
 //endmap
 
 map selenestation
@@ -77,6 +86,8 @@ endmap
 //endmap
 
 map runtimestation
+	minplayers 1
+	votable
 endmap
 
 map multiz_debug

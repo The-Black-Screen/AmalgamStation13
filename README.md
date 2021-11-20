@@ -1,4 +1,4 @@
-# Amalgam Station 13
+# Amalgam Station 13 Codebase
 
 [![Build Status](https://github.com/The-Black-Screen/AmalgamStation13/workflows/CI%20Suite/badge.svg)](https://github.com/The-Black-Station/AmalgamStation13/actions?query=event%3Apush+branch%3Amaster)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/The-Black-Screen/AmalgamStation13.svg)](https://isitmaintained.com/project/The-Black-Screen/AmalgamStation13 "Percentage of issues still open")

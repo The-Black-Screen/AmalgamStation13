@@ -8,14 +8,14 @@ $include interviews.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
-# @SERVERNAME BlackStation13
+# @SERVERNAME AmalgamStation13
 # Which sets the SERVERNAME, and disallows admins from being able to change it using View Variables.
 # @LOG_TWITTER 0
 # Which explicitly disables LOG_TWITTER, as well as locking it.
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-SERVERNAME Black Station 13
+SERVERNAME Amalgam Station 13
 
 ## Server Caption: Shows next to the server name in the BYOND hub.
 #SERVERCAPTION Final Day! This server is SHUTTING DOWN!
@@ -33,10 +33,10 @@ SERVERCAPTION The Problems of the Future, Today!
 #SERVERCAPTION The Rise of the Beefmen...
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
-SERVERSQLNAME BlackStation13SQL
+SERVERSQLNAME AmalgamStation13
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME Space Station 13
+STATIONNAME Amalgam Station 13
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
@@ -105,6 +105,9 @@ LOG_ADMIN
 ## log admin chat
 LOG_ADMINCHAT
 
+## log asset debug logs
+#LOG_ASSET
+
 ## log client access (logon/logoff)
 LOG_ACCESS
 
@@ -161,7 +164,7 @@ LOG_MANIFEST
 LOG_PICTURES
 
 ## log mecha actions
-LOG_MECHA
+# LOG_MECHA
 
 ## log virus and actions
 LOG_VIRUS
@@ -267,7 +270,7 @@ CHECK_RANDOMIZER
 # RULESURL http://www.tgstation13.org/wiki/Rules
 
 ## Github address
-GITHUBURL https://www.github.com/The-Black-Screen/BlackStation13
+GITHUBURL https://www.github.com/The-Black-Screen/AmalgamStation13
 
 ## Discord bot command prefix, if the discord bot is used
 # DISCORDBOTCOMMANDPREFIX ?
@@ -301,9 +304,9 @@ GITHUBURL https://www.github.com/The-Black-Screen/BlackStation13
 ## Uncomment this to forbid admins from possessing the singularity.
 #FORBID_SINGULO_POSSESSION
 
-## Uncomment to show a popup 'reply to' window to every non-admin that receives an adminPM.
-## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)
-#POPUP_ADMIN_PM
+## Uncomment to give admins the ability to send a maptext popup to players.
+## Only fires when an admin requests it, not every ahelp.
+POPUP_ADMIN_PM
 
 ## Uncomment to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
 ALLOW_HOLIDAYS
@@ -512,7 +515,7 @@ HIGH_POP_MC_TICK_RATE 1.1
 HIGH_POP_MC_MODE_AMOUNT 50
 
 ##Disengage high pop mode if player count drops below this
-DISABLE_HIGH_POP_MC_MODE_AMOUNT 47
+DISABLE_HIGH_POP_MC_MODE_AMOUNT 30
 
 ## Uncomment to prevent the world from sleeping while no players are connected after initializations
 #RESUME_AFTER_INITIALIZATIONS
@@ -570,3 +573,9 @@ DEFAULT_VIEW_SQUARE 15x15
 
 ## Once a typepath causes overrun from hard deletes this many times, stop hard deleting it on garbage collection failures. (set to 0 to disable)
 #HARD_DELETES_OVERRUN_LIMIT 0
+
+## Sets an MOTD of the server.
+## You can use this multiple times, and the MOTDs will be appended in order.
+## Based on config directory, so "motd.txt" points to "config/motd.txt"
+MOTD motd.txt
+#MOTD motd_extra.txt

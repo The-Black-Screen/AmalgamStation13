@@ -31,14 +31,9 @@ their_dme = "tgstation.dme"
 our_dme = "RussStation.dme"
 epoch_path = "last_merge"
 build_path = "tools/build/build.js"
+spaceman_path = "SpacemanDMM.toml"
 # files to skip parsing and take ours or theirs
-ours = ["html/changelog.html",
-	"html/changelogs/.all_changelog.yml",
-	"html/templates/header.html",
-	"README.md",
-	#".travis.yml",
-	".github/ISSUE_TEMPLATE/bug_report.md",
-	".github/ISSUE_TEMPLATE/feature_request.md"]
+ours = ["README.md"]
 # .gitattributes is theirs but handled special to avoid git problems
 theirs = [".editorconfig",
 	"tgstation.dme"]
@@ -106,6 +101,11 @@ def get_args():
 		"--dme",
 		action="store_true",
 		help="Fix DME includes in case file changes weren't handled by VS Code extension"
+	)
+	parser.add_argument(
+		"--build",
+		action="store_true",
+		help="Fix build script"
 	)
 	return parser.parse_args()
 
@@ -540,11 +540,27 @@ def fix_build_script(repo):
 	# replace the dme var definition so it uses ours
 	build_content = build_content.replace("DME_NAME = '" + their_dme[:their_dme.find(".dme")], "DME_NAME = '" + our_dme[:our_dme.find(".dme")])
 	# add russstation folder to dm dependency list (ensures build retries if only our files change)
-	build_content = build_content.replace(".depends('code/**')", ".depends('code/**')\n  .depends('russstation/**')")
+	code_line = re.compile("(.*?)(?:code/\*\*)(.*)", re.MULTILINE).search(build_content)
+	russ_line = "\n" + code_line.group(1) + "russstation/**" + code_line.group(2)
+	insertion_point = code_line.end()
+	build_content = build_content[:insertion_point] + russ_line + build_content[insertion_point:]
 	with open(build_path, "w") as build_file:
 		build_file.write(build_content)
 	repo.git.add(build_path)
 	printv("Replaced build script vars")
+
+# fix spaceman config so VS uses the right DME
+def fix_spaceman_config(repo):
+	print("Fixing spaceman config...")
+	spaceman_content = None
+	with open(spaceman_path, "r") as spaceman_file:
+		spaceman_content = spaceman_file.read()
+	# replace the dme var definition so it uses ours
+	spaceman_content = spaceman_content.replace("environment = \"" + their_dme, "environment = \"" + our_dme)
+	with open(spaceman_path, "w") as spaceman_file:
+		spaceman_file.write(spaceman_content)
+	repo.git.add(spaceman_path)
+	printv("Replaced spaceman config vars")
 
 # say anything that still needs said
 def finish(repo, deleted_honks):
@@ -576,6 +592,9 @@ if __name__ == "__main__":
 	elif args.dme:
 		# just fix dme includes
 		update_includes(repo)
+	elif args.build:
+		# just fix build script
+		fix_build_script(repo)
 	else:
 		start = time.perf_counter()
 		clean_state(repo)
@@ -591,6 +610,7 @@ if __name__ == "__main__":
 		update_includes(repo)
 		unstage_ignored_files(repo)
 		fix_build_script(repo)
+		fix_spaceman_config(repo)
 		record_merge_time(repo, current_merge)
 		finish(repo, deleted_honks)
 		end = time.perf_counter()

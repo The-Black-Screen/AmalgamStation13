@@ -31,13 +31,14 @@
 	mail_goodies = list(
 		/obj/item/storage/fancy/cigarettes = 15,
 		/obj/item/pizzabox = 10,
-		/obj/effect/spawner/lootdrop/donkpockets = 10,
+		/obj/effect/spawner/random/food_or_drink/donkpockets = 10,
 		/obj/item/storage/box/handcuffs = 10,
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/choice_beacon/music = 5,
 		/obj/item/crowbar/large = 1,
-		/obj/item/melee/baton/boomerang/loaded = 1,
+		/obj/item/melee/baton/security/boomerang/loaded = 1,
 	)
+	rpg_title = "Independent Guardsman"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 	fulp_spawn = /obj/effect/landmark/start/deputy
 
@@ -46,7 +47,7 @@
 
 /// Engineering
 /datum/job/fulp/deputy/engineering
-	title = "Deputy (Engineering)"
+	title = "Engineering Deputy"
 	department_head = list("Chief Engineer")
 	selection_color = "#fff5cc"
 	total_positions = 1
@@ -64,7 +65,7 @@
 	)
 ///Medical
 /datum/job/fulp/deputy/medical
-	title = "Deputy (Medical)"
+	title = "Medical Deputy"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	total_positions = 1
@@ -82,7 +83,7 @@
 	)
 ///Science
 /datum/job/fulp/deputy/science
-	title = "Deputy (Science)"
+	title = "Science Deputy"
 	department_head = list("Research Director")
 	selection_color = "#ffeeff"
 	total_positions = 1
@@ -100,7 +101,7 @@
 	)
 ///Supply
 /datum/job/fulp/deputy/supply
-	title = "Deputy (Supply)"
+	title = "Supply Deputy"
 	department_head = list("Head of Personnel")
 	selection_color = "#dcba97"
 	total_positions = 1
@@ -117,9 +118,8 @@
 		/datum/job_department/cargo,
 	)
 ///Service
-/*
 /datum/job/fulp/deputy/service
-	title = "Deputy (Service)"
+	title = "Service Deputy"
 	department_head = list("Head of Personnel")
 	selection_color = "#bbe291"
 	total_positions = 1
@@ -134,14 +134,20 @@
 		/datum/job_department/security,
 		/datum/job_department/service,
 	)
-*/
+
+/datum/job/fulp/deputy/config_check()
+	if(deputy_department == DEPARTMENT_SECURITY)
+		return CONFIG_GET(flag/allow_departmentless_deputy)
+	if(deputy_department == DEPARTMENT_SERVICE)
+		return CONFIG_GET(flag/allow_service_deputy)
+	return TRUE
 
 /// Default Deputy trim, this should never be assigned roundstart.
 /datum/id_trim/job/deputy
 	assignment = "Deputy"
 	trim_icon = 'fulp_modules/main_features/jobs/cards.dmi'
 	trim_state = "trim_deputy"
-	full_access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_BRIG, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
+	extra_access = list(ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_BRIG, ACCESS_MINERAL_STOREROOM)
 	config_job = "deputy"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
@@ -150,53 +156,54 @@
 	var/department_access = list()
 
 /datum/id_trim/job/deputy/refresh_trim_access()
-	if(!..())
+	. = ..()
+	if(!.)
 		return
 	access |= department_access
 
 /datum/id_trim/job/deputy/engineering
-	assignment = "Deputy (Engineering)"
+	assignment = "Engineering Deputy"
 	trim_state = "trim_deputyeng"
 	department_access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_ATMOSPHERICS, ACCESS_AUX_BASE, ACCESS_CONSTRUCTION, ACCESS_MECH_ENGINE, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
 	job = /datum/job/fulp/deputy/engineering
 
 /datum/id_trim/job/deputy/medical
-	assignment = "Deputy (Medical)"
+	assignment = "Medical Deputy"
 	trim_state = "trim_deputymed"
 	department_access = list(ACCESS_MEDICAL, ACCESS_PSYCHOLOGY, ACCESS_MORGUE, ACCESS_VIROLOGY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_SURGERY, ACCESS_MECH_MEDICAL)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/fulp/deputy/medical
 
 /datum/id_trim/job/deputy/science
-	assignment = "Deputy (Science)"
+	assignment = "Science Deputy"
 	trim_state = "trim_deputysci"
 	department_access = list(ACCESS_RND, ACCESS_GENETICS, ACCESS_ORDNANCE, ACCESS_MECH_SCIENCE, ACCESS_RESEARCH, ACCESS_ROBOTICS, ACCESS_XENOBIOLOGY, ACCESS_MINERAL_STOREROOM, ACCESS_ORDNANCE_STORAGE)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 	job = /datum/job/fulp/deputy/science
 
 /datum/id_trim/job/deputy/supply
-	assignment = "Deputy (Supply)"
+	assignment = "Supply Deputy"
 	trim_state = "trim_deputysupply"
 	department_access = list(ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE, ACCESS_QM)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/fulp/deputy/supply
 
 /datum/id_trim/job/deputy/service
-	assignment = "Deputy (Service)"
+	assignment = "Service Deputy"
 	trim_state = "trim_deputyservice"
 	department_access = list(ACCESS_PSYCHOLOGY, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LAWYER, ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
-//	job = /datum/job/fulp/deputy/service
+	job = /datum/job/fulp/deputy/service
 
-/datum/job/fulp/deputy/after_spawn(mob/living/carbon/human/H, mob/M, latejoin = FALSE)
+/datum/job/fulp/deputy/after_spawn(mob/living/carbon/human/user, mob/player, latejoin = FALSE)
 	. = ..()
 
 	var/assigned_department = SEC_DEPT_NONE // Might be worth merging this into deputy_department soon.
 	var/channel
 
 	if(!deputy_department || deputy_department == DEPARTMENT_SECURITY)
-		to_chat(M, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
+		to_chat(user, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
 		return
 	switch(deputy_department)
 		if(DEPARTMENT_ENGINEERING)
@@ -214,8 +221,8 @@
 		if(DEPARTMENT_SERVICE)
 			assigned_department = SEC_DEPT_SERVICE
 			channel = RADIO_CHANNEL_SERVICE
-	announce_deputy(H, assigned_department, channel)
-	to_chat(M, "<b>You have been assigned to [assigned_department]!</b>")
+	announce_deputy(user, assigned_department, channel)
+	to_chat(player, "<b>You have been assigned to [assigned_department]!</b>")
 
 /datum/job/fulp/deputy/proc/announce_deputy(mob/deputy, department, channel)
 	var/obj/machinery/announcement_system/announcement_system = pick(GLOB.announcement_systems)

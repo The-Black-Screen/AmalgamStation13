@@ -261,7 +261,6 @@
 	var/obj/structure/table/target_table
 	var/obj/machinery/disposal/bin/target_disposal_bin
 	var/shove_blocked = FALSE //Used to check if a shove is blocked so that if it is knockdown logic can be applied
-
 	//Thank you based whoneedsspace
 	target_collateral_carbon = locate(/mob/living/carbon) in target_shove_turf.contents
 
@@ -324,7 +323,7 @@
 			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 			target.forceMove(target_disposal_bin)
 			target.visible_message(span_danger("[name] shoves [target.name] into \the [target_disposal_bin]!"),
-							span_userdanger("You're shoved into \the [target_disposal_bin] by [target.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+							span_userdanger("You're shoved into \the [target_disposal_bin] by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("You shove [target.name] into \the [target_disposal_bin]!"))
 			log_combat(src, target, "shoved", "into [target_disposal_bin] (disposal bin)")
 	else

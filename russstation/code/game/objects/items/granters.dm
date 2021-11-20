@@ -1,6 +1,6 @@
 /obj/item/book/granter/crafting_recipe/dwarf
 	name = "Getting Started with Craftdwarfship"
-	desc = "A peculiar guide for dwarves to learn things they should already know."
+	desc = "A peculiar guide for Dwarves to learn things they should already know."
 	crafting_recipe_types = list(
 		/datum/crafting_recipe/broadsword,
 		/datum/crafting_recipe/pickaxe,
@@ -10,6 +10,9 @@
 		/datum/crafting_recipe/smithed_armour,
 		/datum/crafting_recipe/smithed_helmet,
 		/datum/crafting_recipe/dwarf_rune,
+		/datum/crafting_recipe/smith_hammer,
+		/datum/crafting_recipe/dwarf_tool,
+		/datum/crafting_recipe/stone_chisel,
 	)
 	icon = 'russstation/icons/obj/library.dmi'
 	icon_state = "dwarf"
@@ -29,6 +32,6 @@
 
 /obj/item/book/granter/crafting_recipe/dwarf/attack_self(mob/user)
 	if(!is_species(user, /datum/species/dwarf))
-		to_chat(user, "The book was written by a particularly inebriated dwarf and doesn't make any sense to you.")
+		to_chat(user, span_warning("The book was written by a particularly inebriated dwarf and doesn't make any sense to you."))
 		return FALSE
 	return ..()

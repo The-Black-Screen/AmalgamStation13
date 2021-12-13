@@ -28,19 +28,19 @@ Returning Maps.
 
 Imported Maps.
 
-AuroraStation: Aurora
-BayStation12: Torch
-BeeStation: CorgStation
-CEV Eris: CEV Eris
-Citadel: LamdaStation, OmegaStation and Snaxi
-Goon: Atlas, Clarion, CogMap, CogMap2, Destiny, Donut3, Horizon, Icarus, Kappa, Kondaru, Manta, Oshan, Ozymandias and Pamgoc
-HippieStation: DonutStation, EndoStation, HippieStation, MetaLake
-Paradise: Cyberiad
-Polaris: Northern Star\Polaris and Southern Cross
-RussStation: CubeStation, EchoStation, Lima and ShitStation
-Skyrat: BlueShift and WaterKiloStation
-VG: BagelStation, BoxesStation, Defficiency, DorfStation, Island, LampreyStation, LowFatBagel, MetaClub, NRVHorizon, RoidStation, Synergy and XOQ
-VORE Station: Cynosure, Stellar Delight and Tether
+* Aurora Station: Aurora
+* Bay Station 12: Torch
+* Bee Station: CorgStation
+* CEV Eris: CEV Eris
+* Citadel Station: LamdaStation, OmegaStation and Snaxi
+* Goon Station: Atlas, Clarion, CogMap, CogMap2, Destiny, Donut3, Horizon, Icarus, Kappa, Kondaru, Manta, Oshan, Ozymandias and Pamgoc
+* Hippie Station: DonutStation, EndoStation, HippieStation, MetaLake
+* Paradise Station: Cyberiad
+* Polaris: Northern Star\Polaris and Southern Cross
+* RussStation: CubeStation, EchoStation, Lima and ShitStation
+* Skyrat: BlueShift and WaterKiloStation
+* VG Station: BagelStation, BoxesStation, Defficiency, DorfStation, Island, LampreyStation, LowFatBagel, MetaClub, NRVHorizon, RoidStation, Synergy and XOQ
+* VORE Station: Cynosure, Stellar Delight and Tether
 
 Outdated or removed maps.
 

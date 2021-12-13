@@ -4,23 +4,23 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/The-Black-Screen/AmalgamStation13.svg)](https://isitmaintained.com/project/The-Black-Screen/AmalgamStation13 "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/The-Black-Screen/AmalgamStation13.svg)](https://isitmaintained.com/project/The-Black-Screen/AmalgamStation13 "Average time to resolve an issue")
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
+![badge?](https://forthebadge.com/images/badges/0-percent-optimized.svg)	[![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com)	![badge.](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)	[![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png)	[![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)	![badge:D](https://forthebadge.com/images/badges/powered-by-black-magic.svg)	
 
 * **Code:** https://github.com/The-Black-Screen/AmalgamStation13
 * **Forum:** No
 * **Wiki:** https://wiki.fulp.gg/
 * **Discord:** No
 
-This is the codebase for AmalgamStation13, a custom fork of [Fulpstation](https://github.com/fulpstation/fulpstation) which is also a custom fork of the [/tg/station](https://github.com/tgstation/tgstation) flavored fork of Space Station 13.
+This is the codebase for AmalgamStation13. Based mainly on [Fulpstation](https://github.com/fulpstation/fulpstation), which is a custom fork of the [/tg/station](https://github.com/tgstation/tgstation) flavored fork of Space Station 13.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
 ## DOWNLOADING
-[Downloading](.github/DOWNLOADING.md)
+[Downloading](.github/guides/DOWNLOADING.md)
 
-[Running on the server](.github/RUNNING_A_SERVER.md)
+[Running on the server](.github/guides/RUNNING_A_SERVER.md)
 
-[Maps and Away Missions](.github/MAPS_AND_AWAY_MISSIONS.md)
+[Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
 ## :exclamation: How to compile :exclamation:
 

@@ -12,18 +12,43 @@ Fulpstation currently has three maps in rotation in addition to the /tg/station 
 * [SeleneStation](https://wiki.fulp.gg/en/SeleneStation)
 * [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
 
-Outdated or removed maps.
-* [BoxStation](https://tgstation13.org/wiki/Boxstation)
-* [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
-* [DonutStation](https://tgstation13.org/wiki/Donutstation)
+AmalgamStation has an abundance of maps in rotation. Custom ones, imports from other codebases and even some of the older SS13 maps have been brought back.
+* [AmalgamStation]
+* [HellStation]
+* [SiberiaStation]
+
+Returning Maps.
 * [AsteroidStation](https://tgstation13.org/wiki/AsteroidStation)
-* [BirdboatStation](https://tgstation13.org/wiki/BirdboatStation)
+* [BoxStation](https://tgstation13.org/wiki/Boxstation)
 * [CereStation](https://tgstation13.org/wiki/CereStation)
 * [DiscStation](https://tgstation13.org/wiki/Discstation)
+* [DonutStation](https://tgstation13.org/wiki/Donutstation)
+* [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
+* [OmegaStation](https://tgstation13.org/wiki/OmegaStation)
+
+Imported Maps.
+
+AuroraStation: Aurora
+BayStation12: Torch
+BeeStation: CorgStation
+CEV Eris: CEV Eris
+Citadel: LamdaStation, OmegaStation and Snaxi
+Goon: Atlas, Clarion, CogMap, CogMap2, Destiny, Donut3, Horizon, Icarus, Kappa, Kondaru, Manta, Oshan, Ozymandias and Pamgoc
+HippieStation: DonutStation, EndoStation, HippieStation, MetaLake
+Paradise: Cyberiad
+Polaris: Northern Star\Polaris and Southern Cross
+RussStation: CubeStation, EchoStation, Lima and ShitStation
+Skyrat: BlueShift and WaterKiloStation
+VG: BagelStation, BoxesStation, Defficiency, DorfStation, Island, LampreyStation, LowFatBagel, MetaClub, NRVHorizon, RoidStation, Synergy and XOQ
+VORE Station: Cynosure, Stellar Delight and Tether
+
+Outdated or removed maps.
+
+* [BirdboatStation](https://tgstation13.org/wiki/BirdboatStation)
 * [DreamStation](https://tgstation13.org/wiki/Dreamstation)
 * [EfficiencyStation](https://tgstation13.org/wiki/EfficiencyStation)
 * [MiniStation](https://tgstation13.org/wiki/MiniStation)
-* [OmegaStation](https://tgstation13.org/wiki/OmegaStation)
+
 
 Debug maps.
 * [RuntimeStation](https://tgstation13.org/wiki/RuntimeStation)

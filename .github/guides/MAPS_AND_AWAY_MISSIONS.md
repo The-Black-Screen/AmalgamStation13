@@ -12,7 +12,7 @@ Fulpstation currently has three maps in rotation in addition to the /tg/station 
 * [SeleneStation](https://wiki.fulp.gg/en/SeleneStation)
 * [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
 
-AmalgamStation has an abundance of maps in rotation. Custom ones, imports from other codebases and even some of the older SS13 maps have been brought back.
+AmalgamStation will, once the big update has rolled out, have an abundance of maps to be switched in and out of rotation. Custom ones, imports from other codebases and even some of the older SS13 maps are being brought back.
 * [AmalgamStation]
 * [HellStation]
 * [SiberiaStation]
@@ -37,7 +37,7 @@ Imported Maps.
 * Hippie Station: DonutStation, EndoStation, HippieStation, MetaLake
 * Paradise Station: Cyberiad
 * Polaris: Northern Star\Polaris and Southern Cross
-* RussStation: CubeStation, EchoStation, Lima and ShitStation
+* RussStation: CubeStation, EchoStation, Lima, RussAmalgamStation and ShitStation
 * Skyrat: BlueShift and WaterKiloStation
 * VG Station: BagelStation, BoxesStation, Defficiency, DorfStation, Island, LampreyStation, LowFatBagel, MetaClub, NRVHorizon, RoidStation, Synergy and XOQ
 * VORE Station: Cynosure, Stellar Delight and Tether
